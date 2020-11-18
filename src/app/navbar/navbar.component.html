@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg ">
+  <a class="navbar-brand" [routerLink]="'home'">Logo</a>
+
+  <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+
+  <!-- Step 2: Add the ngbCollapse directive to the element below. -->
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item active">
+        <!-- Step 4: Close the menu when a link is clicked. -->
+        <a class="nav-link" [routerLink]="['home','false']" (click)="isMenuCollapsed = true">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'clips'" (click)="isMenuCollapsed = true">Clips</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'fanShow'" (click)="isMenuCollapsed = true">Fan Show</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="'poll'" (click)="isMenuCollapsed = true">Poll</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'sainaOriginals'" (click)="isMenuCollapsed = true">Saina Originals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'about'" (click)="isMenuCollapsed = true">About</a>
+        </li>
+       </ul>
+       <form class="form-inline my-2 my-lg-0">
+        <div class="" *ngIf="status">
+        <input class="form-control mr-sm-2 searchBox" type="search" placeholder="Search" aria-label="Search"></div>
+        <button class="btn  my-2 my-sm-0" type="submit" (click)="showSearchBar()" ><i class="fas fa-search" ></i></button>
+      </form>
+     
+       
+      <div ngbDropdown class="d-inline-block ">
+        
+        <button class="btn nav-link dropdown-toggle"  id="dropdownBasic1" ngbDropdownToggle><i class="fas fa-bars"></i></button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
+            <button class="dropdown-item">Downloads</button>
+            <button class="dropdown-item">Favourites</button>
+            <button class="dropdown-item">New Arrivals</button>
+            <button class="dropdown-item">Trending</button>
+            <button class="dropdown-item">My Account</button>
+            <button class="dropdown-item" (click)="signOut()">Sign Out</button>
+        </div>
+    </div>
+  
+   
+      
+
+  </div>
+ 
+</nav>

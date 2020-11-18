@@ -1,0 +1,77 @@
+
+<div class="launch-page">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="jumbotron signin-box card">
+        <div class="col">
+            <div>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" >
+                <div class="form-group">               
+                  <label class="labels" for="email">Email or Mobile Number</label>
+                  <input formControlName="email" name="email" type="email" class="form-control text-box" id="email" >
+                  <div class="l_error" *ngIf="loginError('email')">Invalid Email</div>
+                </div>
+                <div class="form-group password-box">
+                  <label  class="labels" for="pwd">Password</label>
+                  <show-hide-password class="show-hide text-box" btnStyle="none" btnOutline="none">
+                  <!-- btnStyle="primary" --> 
+                    <input type='password' formControlName="psw" name="psw" class="form-control text-box" id="pwd">                 
+                 </show-hide-password>
+                   <div class="l_error" *ngIf="loginError('psw')">Invalid password</div>
+                  </div>
+               <button type="submit" class="btn btn-signin">SIGN IN</button>
+               <!-- <a routerLink="signup">SignUp</a> -->
+               <div class="row">
+                <!-- <div class="col-xs-12 col-sm-6 col-md-8">   
+
+                </div>
+                <div class="col-xs-6 col-md-4"> -->
+                  <a routerLink="forgot-password" class="forgot-link">Forgot Password</a>
+                <!-- </div> -->
+                </div>
+              </form>
+           
+              </div>
+              <div class="container-line">
+                <hr class="hr-text" data-content="or">
+              
+              </div>
+        </div>
+       
+        <div class="row social-icons">
+          <!-- <p style="color: aliceblue;">hiiii</p> -->
+          <div class="col-2 cols">
+            &nbsp;
+          </div>
+          <div class="col-2 cols">
+          <img src="assets/images/google.png" alt="google" class="image-size">
+        </div>
+        <div class="col-2 cols">
+          <img src="assets/images/facebook.png" alt="facebook" class="image-size">
+        </div>
+        <div class="col-2 cols">
+          <img src="assets/images/mac.png" alt="mac" class="image-size-m">
+        </div>
+        <div class="col-2 cols">
+          <img src="assets/images/amazon.png" alt="amazon" class="image-size-a"> 
+        </div>
+        <div class="col-2 cols">
+          &nbsp;
+        </div>
+        </div>
+        <div class="sign-up-text">
+          Don't have an account ?
+        </div>
+        <div class="sign-up">
+          <a routerLink="signup">
+          <button class="btn btn-signup" type="submit">SIGN UP</button>
+        </a>
+        </div>
+        </div>
+        <div class="col">
+            
+        </div>
+    </div> 
+</div>
+

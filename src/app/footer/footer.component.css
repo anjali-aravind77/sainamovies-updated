@@ -1,0 +1,23 @@
+.footer-page {
+  background: black;
+  width: 100%;
+  padding: 3% 3%;
+  color: rgb(134, 131, 131);
+  text-align: left;
+}
+
+.texts {
+   margin-left: 5px;
+}
+
+.icons {
+  font-family: Flaticon;
+  margin-left: 5px;
+}
+
+.text-grid {
+  margin-top: 20px;
+}
+.images{
+   margin-right: 2%;
+}

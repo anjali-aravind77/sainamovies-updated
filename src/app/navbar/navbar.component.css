@@ -1,0 +1,46 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:active ,a:hover{
+    color: orange;
+    background-color: black;
+}
+
+.nav-main {
+       color: white;
+       background-color:black;
+}
+.navbar{
+    background-color: black;
+    margin: 0;
+}
+/* 
+.fas{
+    color: white;
+    background-color: white;
+} */
+.btn {
+    color: ivory;
+}
+.dropdown-menu-right{
+    background-color:#000000;
+    /* margin:4px auto -200px 4px ; */
+    
+}
+.dropdown-item{
+    color: #ffffff;
+}
+.dropdown-item:hover{
+    background-color: rgb(39, 37, 37);
+    color: goldenrod;
+}
+.dropdown-toggle::after {
+    display:none;
+    
+}
+.searchBox{
+    background-color: rgb(41, 39, 39);
+    color: white;
+}

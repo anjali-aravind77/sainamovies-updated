@@ -1,0 +1,76 @@
+  
+<div class="video_details" *ngIf="id">
+    <div class="row">
+        <div class="col-sm-9 player-section">
+       
+            <video id="vjs-player" class="video-js vjs-big-play-centered" controls playsinline preload="none"></video>
+            &nbsp;
+            <div class="row">
+                <div class="col-sm-6 left">
+                    <button type="button" class="btn btn-dark" (click)="playVideoBtn()">
+                        <div *ngIf="playStatus ? true : false" class="toggleBtn">                                                               
+                        <i class="fas fa-play"></i> {{playText}}
+                        </div>
+                        <div *ngIf="!playStatus ? true : false" class="toggleBtn">
+                        <i class="fas fa-pause"></i> &nbsp; {{playText}}
+                     </div>
+                     </button>
+                    <button type="button" class="btn btn-dark"> Watch Trailer</button>
+                </div>
+                <div class="col-sm-6 right">
+                    <button type="button" class="btn btn-dark icons"><i class="far fa-thumbs-up"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="fas fa-heart"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="fas fa-share-alt"></i></button>
+                    <button type="button" class="btn btn-dark icons"><i class="fas fa-download"></i></button>
+                </div>
+            </div>
+            &nbsp;
+            <div class="row detail">
+
+                <div class="col-sm-6">
+                    <h5>{{details['title']}}</h5>
+                    {{details.category }}|{{year[0] }}|{{details.duration }}|{{details.maturityRating }}|⭐{{ details.rating}}
+                </div>
+                <div class="col-sm-6 fieldset-section" >
+                    <fieldset class="border p-2" id="f-sub">
+                        <legend class="w-auto leg-subscribe">Subscribe</legend>
+                        <h6 style="font-weight: normal;text-align: center;"> 👑 Get Premium </h6>
+                     </fieldset>
+                    <!-- <fieldset id="f-sub">
+                            <legend class="leg-subscribe">Subscribe</legend> 
+                            👑Get Premium
+                            <button type="button" class="btn btn-dark"> </button>
+                        </fieldset> -->
+                        <fieldset class="border p-2" id="f-rent">
+                            <legend class="w-auto leg-rent">Rent</legend>
+                           <h6 style="font-weight: normal; text-align: center; "> 90 &#8377; </h6>
+                            <!-- <button type="button" class="btn btn-dark"></button> -->
+                        </fieldset>
+                </div>
+            </div>
+            <p>{{details.synopsis}}</p>
+        </div>
+ 
+        
+        <div class="col-sm-3">
+            <h6>More like this</h6>
+            &nbsp;
+        <div id="myCarousel" class="carousel slide vertical" *ngIf="videoArray">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                <div class="item" *ngFor="let v of videoArray" >
+                    
+                    <img class="img"src="{{v.thumbUrl}}"  (click)="getId(v.videoId)" >
+                  
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    
+
+    </div>
+</div>
+
+
+
