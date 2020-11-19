@@ -24,6 +24,9 @@ scrollEvent() {
 showSearchBar(){
 this.status =!this.status;
 }
+toggleView(){
+ this.dataService.toggleView();
+}
 signOut(){
   this.dataService.signOut()
 }

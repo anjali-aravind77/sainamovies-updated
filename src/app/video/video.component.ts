@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input, SimpleChanges, OnDestroy, ElementRef, ViewChild, OnChanges, AfterViewInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit ,Input, SimpleChanges, OnDestroy, ElementRef, ViewChild, OnChanges, AfterViewInit, ViewEncapsulation, DoCheck} from '@angular/core';
 import { DataService } from '../services/data.service';
 import videojs from 'video.js';
 
@@ -20,7 +20,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   cast:[];
   test: string[] = []; 
   year;
-  constructor(private dataservice:DataService) {
+  constructor(private dataservice:DataService, private nativeElement: ElementRef) {
     window.scrollTo(0, 0);
    }
 
@@ -51,6 +51,15 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     })     
     
   }
+  playerButton() {
+    this.player = this;
+   // if(this.player.nativeElement.paused()) {
+   //   console.log("1")
+   // }
+   this.player.on('playing', function() {
+     console.log("1")
+   });
+ }
 
   playVideoBtn() {
     var videoObj = videojs('vjs-player');
@@ -65,7 +74,8 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
           this.playText = 'Pause';
           videoObj.play();
       }}
-
+     
+    
   getId(idFromCarousel){
     this.id=idFromCarousel;
     this.getIdFunction(this.id);
@@ -83,26 +93,12 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     }]);
     myPlayer.poster(this.urlPoster);
   }
-  // ngAfterViewInit() {
-  //   const options = {
-  //     'sources' : [{
-  //       'src' : this.urlVideohls,
-  //       'type' : 'application/x-mpegURL'
-  //       },{
-  //         'src':this.urlVideoOrg,
-  //         'type':'video/mp4'
-  //       }
-  //     ],
-  //     'poster' : this.urlPoster
-  //   };
-  //   this.player = videojs('vjs-player', options);
-  // }
-
+  
   ngOnDestroy() {
     // destroy player
     if (this.player) {
       this.player.dispose();
-      
+      this.id = "";
     }
   }
 }

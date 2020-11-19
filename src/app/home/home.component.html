@@ -1,8 +1,9 @@
 <app-video [id]="id" [videoArray]="videoPass" *ngIf="video_selected" ></app-video>
 
 <!-- banner image display -->
-<div id="home" *ngIf="id? false:true">
-   <div class="banner carousel">
+<div id="home" *ngIf="!video_selected">
+ 
+    <div class="banner carousel">
       <!-- <div class="container-fluid"> -->   
       <ngb-carousel class="no-indicators" *ngIf="slide">    
         <ng-template ngbSlide *ngFor="let s of slide">   
@@ -12,12 +13,14 @@
           </ng-template> 
       </ngb-carousel> 
     </div>
-
-  <ng-template ngFor let-item [ngForOf]="allCategorys" let-i="index" [ngForTrackBy]="category">
+    <div class="categories">
+   <ng-template ngFor let-item [ngForOf]="allCategorys" let-i="index" [ngForTrackBy]="category">
     <div *ngIf="item.videos.length !=0">
       <div class="row">
       <div class="col-sm-6 headings">
         {{item.category}}
+     
+        
       </div>
       <div class="col-sm-6 view-all">
         View All
@@ -31,4 +34,5 @@
         </carousel>
      </div>  <!--  null category div close -->
   </ng-template>
+</div>
 </div>

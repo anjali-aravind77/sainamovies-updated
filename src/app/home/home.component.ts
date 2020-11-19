@@ -10,7 +10,8 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class HomeComponent implements OnInit {
   slide: string[] = []; 
   id="";
-  video_selected=false;
+  video_selected=this.dataservice.toggle;
+  
   state;
   
   constructor(private dataservice:DataService,private router:Router,private activatedRouter:ActivatedRoute) {      
@@ -20,15 +21,6 @@ export class HomeComponent implements OnInit {
     this.getBanner();
     this.getHomeVideos();
 
-    this.activatedRouter.paramMap.subscribe((params:any) => {
-      this.state = params.get('state');
-  if(this.state.charAt(0)==':'){
-this.video_selected ==this.state.substring(1)
-alert(this.video_selected)
-  }
-     
-     
-    })
   }
   getBanner(){
      this.dataservice.getBanner()

@@ -11,7 +11,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 export class DataService {
   userData; token;
-  
+  toggle=false;
   constructor(private http:HttpClient,
     public afAuth: AngularFireAuth,
     public firebase: FirebaseApp,
@@ -80,12 +80,14 @@ getDetails(id){
          window.alert(err)
        })
         
-         this.router.navigateByUrl("home/:false")
+         this.router.navigateByUrl("home")
       }).catch(err => {
         window.alert(err);
       })
     }
-
+    toggleView(){
+      this.toggle=!this.toggle
+    }
     // private oAuthLogin(provider) {
     //   return this.afAuth.signInWithPopup(provider)
     //   .then((credential) => {
