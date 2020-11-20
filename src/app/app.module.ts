@@ -22,6 +22,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NavbarMobileComponent } from './navbar-mobile/navbar-mobile.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClipsComponent } from './clips/clips.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ClipsComponent } from './clips/clips.component';
     VideoComponent,
     NavbarMobileComponent,
     FooterComponent,
-    ClipsComponent
+    ClipsComponent,
+    PrivacyComponent,
+    TermsConditionsComponent
   ],
   imports: [
     BrowserModule,

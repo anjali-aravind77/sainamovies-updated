@@ -21,3 +21,9 @@
 .images{
    margin-right: 2%;
 }
+a:hover{
+  color: goldenrod;
+}
+a{
+  color: rgb(134, 131, 131) ;
+}

@@ -38,24 +38,23 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
       this.id=idFromCarousel;   
       this.dataservice.getDetails(this.id)
       .subscribe((resp:any)=>{
-        // console.log(resp)
+      
       this.urlVideohls = resp.data[0]['videoUrl'].hls;
       this.urlVideoOrg = resp.data[0]['videoUrl'].original;
-      // console.log(this.urlVideoOrg)
+     
       this.urlPoster = resp.data[0]['videoBgUrl'];
       this.details=resp.data[0];
-      // console.log(this.details)
+ 
       this.cast=resp.data[0]['castCrew']; 
       this.year=resp.data[0]['releaseDate'].split('-').slice(0,1)
         this.playVideo();   
+        window.scrollTo(0, 0);
     })     
     
   }
   playerButton() {
     this.player = this;
-   // if(this.player.nativeElement.paused()) {
-   //   console.log("1")
-   // }
+  
    this.player.on('playing', function() {
      console.log("1")
    });
@@ -95,7 +94,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   }
   
   ngOnDestroy() {
-    // destroy player
+   
     if (this.player) {
       this.player.dispose();
       this.id = "";

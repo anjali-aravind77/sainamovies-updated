@@ -21,12 +21,15 @@ export class NavbarComponent implements OnInit {
 scrollEvent() {
     window.pageYOffset >= 80 ? (this.isScrolled = true) : (this.isScrolled = false);
 }
+
+
+
 showSearchBar(){
 this.status =!this.status;
 }
 toggleView(){
  this.dataService.toggleView();
-}
+ }
 signOut(){
   this.dataService.signOut()
 }

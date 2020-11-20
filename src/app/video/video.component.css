@@ -79,8 +79,11 @@ legend.leg-rent {
 }
 
 .img{
-    width:250px;
-    height: 150px;
+    /* width:250px;
+    height: 150px; */
+    width: 250px;
+    height: 200px;
+    max-height: 200px;
 }
 .item{
   padding-bottom: 10%;

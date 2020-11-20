@@ -1,0 +1,22 @@
+.tandc{
+    background-color: black;
+    color:white;
+    text-align: justify;
+    font-size: large;
+    padding: 5% 10%;
+ 
+}
+.align{
+    text-align: right;
+}
+.main_head{
+    text-align: center;
+}
+.span1{
+    background-color: red;
+}
+h6 {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: large;
+}

@@ -19,10 +19,10 @@ export class DataService {
     public router: Router) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
-          // console.log(user.displayName);
+         
           this.userData = user;
           localStorage.setItem('user', JSON.stringify(this.userData));
-          // console.log(JSON.parse(localStorage.getItem('user')));
+          
         } else {
           localStorage.setItem('user', null);
         }
@@ -32,7 +32,7 @@ export class DataService {
     this.token= JSON.parse(localStorage.getItem('token'));
    }
   getOptions(){
-    // console.log("token in options "+this.token)
+ 
     let headers = new HttpHeaders();
     headers = headers.set('authorization', 'Bearer '+this.token);
     return {
@@ -58,8 +58,7 @@ getDetails(id){
     signUp(data) {            
       this.afAuth.createUserWithEmailAndPassword(data.email, data.password)
       .then(() => {   
-        // console.log(data)
-        // this.afs.doc('userdata');
+        
         this.router.navigateByUrl('');
       }).catch(error => {
         window.alert(error);
@@ -86,23 +85,11 @@ getDetails(id){
       })
     }
     toggleView(){
+     
       this.toggle=!this.toggle
+   
     }
-    // private oAuthLogin(provider) {
-    //   return this.afAuth.signInWithPopup(provider)
-    //   .then((credential) => {
-        
-    //   })
-    // }
-
-    // updateUserData(user) {
-    //   const userRef = this.afs.collection('users').doc(user.uid);
-    //   const data: User = {
-    //     uid: user.uid,
-    //     email: user.email,
-    //     displayName:user.displayName
-    //   }
-    // }
+    
 
     signOut() {
       return this.afAuth.signOut()      

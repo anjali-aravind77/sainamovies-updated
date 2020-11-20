@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import {DataService} from '../services/data.service';
 import { ActivatedRoute, Router} from '@angular/router';
 
@@ -10,11 +10,12 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class HomeComponent implements OnInit {
   slide: string[] = []; 
   id="";
-  video_selected=this.dataservice.toggle;
-  
+
+video_selected=this.dataservice.toggle;
   state;
   
-  constructor(private dataservice:DataService,private router:Router,private activatedRouter:ActivatedRoute) {      
+  constructor(private dataservice:DataService,private router:Router,private activatedRouter:ActivatedRoute) { 
+       
   }
  
   ngOnInit(): void {
@@ -22,15 +23,15 @@ export class HomeComponent implements OnInit {
     this.getHomeVideos();
 
   }
+ 
   getBanner(){
      this.dataservice.getBanner()
     .subscribe((resp:any)=>{
-      // console.log(resp)
+    
       for(var i=0; i< resp.length; i++) {
         this.slide.push(resp[i].thumbUrl)
       }
-      // this.slide=resp[0].thumbUrl
-    //  console.log(this.slide);
+    
     })
   }
   allCategorys;

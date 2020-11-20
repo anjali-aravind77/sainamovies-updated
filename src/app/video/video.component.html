@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-9 player-section">
        
-            <video id="vjs-player" class="video-js vjs-big-play-centered" controls playsinline preload="none" (click)="playerButton()"></video>
+            <video id="vjs-player" class="video-js vjs-big-play-centered" controls playsinline preload="none" data-setup='{"fluid": true}' (click)="playerButton()"></video>
             &nbsp;
             <div class="row">
                 <div class="col-sm-6 left">
@@ -37,15 +37,11 @@
                         <legend class="w-auto leg-subscribe">Subscribe</legend>
                         <h6 style="font-weight: normal;text-align: center;"> 👑 Get Premium </h6>
                      </fieldset>
-                    <!-- <fieldset id="f-sub">
-                            <legend class="leg-subscribe">Subscribe</legend> 
-                            👑Get Premium
-                            <button type="button" class="btn btn-dark"> </button>
-                        </fieldset> -->
+                   
                         <fieldset class="border p-2" id="f-rent">
                             <legend class="w-auto leg-rent">Rent</legend>
                            <h6 style="font-weight: normal; text-align: center; "> 90 &#8377; </h6>
-                            <!-- <button type="button" class="btn btn-dark"></button> -->
+                        
                         </fieldset>
                 </div>
             </div>
