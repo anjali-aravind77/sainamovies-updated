@@ -34,6 +34,16 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   ngOnChanges(changes: SimpleChanges){
       this.getIdFunction(this.id);  
   }
+  ngAfterViewChecked() {
+    var videoPl = videojs('vjs-player');
+    if (!videoPl.paused()) {
+         this.playStatus = false;
+         this.playText = 'Pause';
+     } else {
+         this.playStatus = true;
+         this.playText = 'Play';
+     }
+  }
   getIdFunction(idFromCarousel){
       this.id=idFromCarousel;   
       this.dataservice.getDetails(this.id)
@@ -63,14 +73,10 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   playVideoBtn() {
     var videoObj = videojs('vjs-player');
       if (!videoObj.paused()) {
-          console.log("Video is playing");
-          this.playStatus = true;
-          this.playText = 'Play';
+          
           videoObj.pause();
       } else {
-          console.log("Video is paused");
-          this.playStatus = false;
-          this.playText = 'Pause';
+         
           videoObj.play();
       }}
      
