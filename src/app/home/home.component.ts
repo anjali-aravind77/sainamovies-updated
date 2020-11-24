@@ -10,12 +10,10 @@ import { ActivatedRoute, Router} from '@angular/router';
 export class HomeComponent implements OnInit {
   slide: string[] = []; 
   id="";
-
-  // video_selected;
   state;
   
   constructor(public dataservice:DataService,private router:Router,private activatedRouter:ActivatedRoute) { 
-       
+   
   }
  
   ngOnInit(): void {
@@ -23,10 +21,7 @@ export class HomeComponent implements OnInit {
     this.getHomeVideos();
 
   }
-//  ngOnChanges(changes:SimpleChanges){
-//  this.video_selected=this.dataservice.toggle;
-//  alert(this.video_selected)
-//  }
+
   getBanner(){
      this.dataservice.getBanner()
     .subscribe((resp:any)=>{
@@ -49,8 +44,8 @@ export class HomeComponent implements OnInit {
     url; options; videoPass;
   getId(videoId, catName){   
        this.id =videoId;
-      // this.video_selected = !this.video_selected;
-      this.dataservice.toggle=!this.dataservice.toggle
+       videoId="";
+       this.dataservice.toggle=!this.dataservice.toggle
         for(var i = 0; i< this.allCategorys.length; i++) {
           if(this.allCategorys[i].category == catName) {
             this.videoPass = this.allCategorys[i].videos;        
@@ -61,4 +56,3 @@ export class HomeComponent implements OnInit {
 
   }
 }
-

@@ -29,6 +29,8 @@ this.status =!this.status;
 }
 toggleView(){
  this.dataService.toggleView();
+ window.location.reload();
+ 
  }
 signOut(){
   this.dataService.signOut()

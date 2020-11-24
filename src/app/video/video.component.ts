@@ -9,7 +9,7 @@ import videojs from 'video.js';
   encapsulation: ViewEncapsulation.None,
 })
 export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
-  @Input() id; playStatus; playText = 'Play';
+  @Input() id; playStatus; playText;
   // @ViewChild('target', {static: true}) target: ElementRef;
   // see options: https://github.com/videojs/video.js/blob/mastertutorial-options.html
   
@@ -26,26 +26,36 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
 
   ngOnInit() {
     this.playStatus = true;
+    this.playText = 'Play';
     for(var i=0; i< this.videoArray.length; i++) { 
       this.test.push(this.videoArray[i].thumbUrl);
     }
   }
   
   ngOnChanges(changes: SimpleChanges){
+    console.log(changes)
       this.getIdFunction(this.id);  
+      this.dataservice.toggleWithId = this.id;
   }
-  ngAfterViewChecked() {
+
+  ngAfterViewInit() {
     var videoPl = videojs('vjs-player');
-    if (!videoPl.paused()) {
-         this.playStatus = false;
-         this.playText = 'Pause';
-     } else {
-         this.playStatus = true;
-         this.playText = 'Play';
-     }
+    
+    document.querySelector('video').addEventListener('play',  evt => { 
+               this.playStatus = false;
+               this.playText = 'Pause';          
+      
+   }); 
+    document.querySelector('video').addEventListener('pause', ev => {
+            this.playStatus = true;
+            this.playText = 'Play';
+    })
+
   }
+  
   getIdFunction(idFromCarousel){
-      this.id=idFromCarousel;   
+      this.id=idFromCarousel;
+      idFromCarousel = " "; 
       this.dataservice.getDetails(this.id)
       .subscribe((resp:any)=>{
       
@@ -62,13 +72,7 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
     })     
     
   }
-  playerButton() {
-    this.player = this;
-  
-   this.player.on('playing', function() {
-     console.log("1")
-   });
- }
+
 
   playVideoBtn() {
     var videoObj = videojs('vjs-player');
@@ -100,10 +104,10 @@ export class VideoComponent implements OnInit, OnChanges,  OnDestroy {
   }
   
   ngOnDestroy() {
-   
-    if (this.player) {
-      this.player.dispose();
-      this.id = "";
-    }
+    this.id = ""; 
+    this.videoArray = [];
+    var myPlayer = videojs('vjs-player');
+    myPlayer.dispose();
+  
   }
 }

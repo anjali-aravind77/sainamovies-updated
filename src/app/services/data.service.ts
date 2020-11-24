@@ -28,6 +28,7 @@ export class DataService {
         }
       })
    }
+ 
    getToken(){
     this.token= JSON.parse(localStorage.getItem('token'));
    }
@@ -84,8 +85,9 @@ getDetails(id){
         window.alert(err);
       })
     }
+    toggleWithId;
     toggleView(){
-     
+     if(this.toggleWithId)
       this.toggle=!this.toggle
    
     }

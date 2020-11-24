@@ -1,17 +1,16 @@
-  
 <div class="video_details" *ngIf="id">
-    <!-- do we need the above ngIf? -->
     <div class="row">
         <div class="col-sm-9 player-section">
        
-            <video id="vjs-player" class="video-js vjs-big-play-centered" controls playsinline preload="none" data-setup='{"fluid": true}' ></video>
+            <video id="vjs-player" #myplayer class="video-js vjs-big-play-centered" controls playsinline preload="none" data-setup='{"fluid": true}' ></video>
             
             &nbsp;
+
             <div class="row">
                 <div class="col-sm-6 left">
                     <button type="button" class="btn btn-dark" (click)="playVideoBtn()">
                         <div *ngIf="playStatus ? true : false" class="toggleBtn">                                                               
-                        <i class="fas fa-play"></i> {{playText}}
+                        <i class="fas fa-play"></i> &nbsp; {{playText}}
                         </div>
                         <div *ngIf="!playStatus ? true : false" class="toggleBtn">
                         <i class="fas fa-pause"></i> &nbsp; {{playText}}
@@ -58,7 +57,7 @@
             <div class="carousel-inner">
                 <div class="item" *ngFor="let v of videoArray" >
                     
-                    <img class="img"src="{{v.thumbUrl}}"  (click)="getId(v.videoId)" >
+                    <img class="img" src="{{v.thumbUrl}}" (click)="getId(v.videoId)" >
                   
                 </div>
               
@@ -69,6 +68,3 @@
 
     </div>
 </div>
-
-
-
