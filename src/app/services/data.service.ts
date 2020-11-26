@@ -5,6 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FirebaseApp } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+import  auth  from 'firebase/app';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +14,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class DataService {
   userData; token;
   toggle=false;
+  ngZone: any;
   constructor(private http:HttpClient,
     public afAuth: AngularFireAuth,
     public firebase: FirebaseApp,
@@ -92,6 +95,23 @@ getDetails(id){
    
     }
     
+     // Sign in with Google
+  GoogleAuth() {
+    return this.AuthLogin(new auth.auth.GoogleAuthProvider());
+  }
+
+  // Auth logic to run auth providers
+  AuthLogin(provider) {
+    return this.afAuth.signInWithPopup(provider)
+    .then((result) => {
+       this.ngZone.run(() => {
+          this.router.navigate(['home']);
+        })
+      // this.SetUserData(result.user);
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
 
     signOut() {
       return this.afAuth.signOut()      
